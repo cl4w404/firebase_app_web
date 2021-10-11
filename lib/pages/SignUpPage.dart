@@ -6,6 +6,7 @@ import 'package:firebase_app_web/pages/SignInPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/gestures.dart';
@@ -33,7 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Center(
         child: Container(
           child: Container(
-            color: Colors.blue,
+            color: Colors.amberAccent,
             height: 700,
             width: 1000,
             child: Stack(children: <Widget>[
@@ -44,7 +45,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 700.0,
                     width: 600.0,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent),
+                      border: Border.all(color: Colors.amber),
                       gradient: LinearGradient(
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
@@ -123,7 +124,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             textColor: Colors.white,
                             splashColor: Colors.red,
-                            color: Colors.lightBlue,
+                            color: Colors.amber,
                             onPressed: () async {
                               final isValid = _formKey.currentState.validate();
                               setState(() {
@@ -199,7 +200,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                                     SignInPage()));
                                       },
                                     style: TextStyle(
-                                      color: Colors.blue,
+                                      color: Colors.amber,
                                     )),
                               ],
                             ),

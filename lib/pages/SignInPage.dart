@@ -27,14 +27,13 @@ class _SignInPageState extends State<SignInPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isHidden = true;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
-          color: Colors.blue,
+          color: Colors.amber,
           height: 700,
           width: 1000,
           child: Form(
@@ -53,7 +52,7 @@ class _SignInPageState extends State<SignInPage> {
                       Colors.white,
                     ],
                   ),
-                  border: Border.all(color: Colors.blueAccent),
+                  border: Border.all(color: Colors.amber),
                 ),
                 child: Form(
                   child: Container(
@@ -64,35 +63,38 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       Center(
                           child: Text(
-                            'LOGIN',
-                            style: TextStyle(fontWeight: FontWeight.bold,),
-                          )),
+                        'LOGIN',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
                       const SizedBox(
                         height: 10,
                       ),
                       TextFormField(
                         controller: _emailController,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.email),
-                            contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 40.0),
-                            labelText: "Email",
-                            border: OutlineInputBorder(),
-                          ),
-                          validator: (email) =>
-                          email != null && !EmailValidator.validate(email)
-                              ? 'Enter a valid email'
-                              : null,
-                          ),
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 40.0),
+                          labelText: "Email",
+                          border: OutlineInputBorder(),
+                        ),
+                        validator: (email) =>
+                            email != null && !EmailValidator.validate(email)
+                                ? 'Enter a valid email'
+                                : null,
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
+                        obscureText: _isHidden,
                         controller: _pwdController,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock),
                           contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 40.0),
+                              const EdgeInsets.symmetric(horizontal: 40.0),
                           labelText: "Password",
                           border: OutlineInputBorder(),
                         ),
@@ -102,38 +104,39 @@ class _SignInPageState extends State<SignInPage> {
                           }
                           return null;
                         },
-
                       ),
                       SizedBox(
                         height: 40,
                       ),
                       RaisedButton.icon(
-                        onPressed: () async{
-
-                            try {
-                              firebase_auth.UserCredential userCredential =
-                                  await firebaseAuth.signInWithEmailAndPassword(
-                                  email: _emailController.text, password: _pwdController.text);
-                              print(userCredential.user.email);
-                              setState(() {
-                                circular = false;
-                              });
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(builder: (builder) => HomePage()),
-                                      (route) => false);
-                            } catch (e) {
-                              final snackbar = SnackBar(content: Text(e.toString()));
-                              ScaffoldMessenger.of(context).showSnackBar(snackbar);
-                              setState(() {
-                                circular = false;
-                              });
-                            }
-
+                        onPressed: () async {
+                          try {
+                            firebase_auth.UserCredential userCredential =
+                                await firebaseAuth.signInWithEmailAndPassword(
+                                    email: _emailController.text,
+                                    password: _pwdController.text);
+                            print(userCredential.user.email);
+                            setState(() {
+                              circular = false;
+                            });
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) => HomePage()),
+                                (route) => false);
+                          } catch (e) {
+                            final snackbar =
+                                SnackBar(content: Text(e.toString()));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackbar);
+                            setState(() {
+                              circular = false;
+                            });
+                          }
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(30.0))),
+                                BorderRadius.all(Radius.circular(30.0))),
                         label: Text(
                           'Login',
                           style: TextStyle(color: Colors.white),
@@ -144,7 +147,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         textColor: Colors.white,
                         splashColor: Colors.red,
-                        color: Colors.lightBlue,
+                        color: Colors.amber,
                       ),
                       SizedBox(
                         height: 10,
@@ -188,7 +191,7 @@ class _SignInPageState extends State<SignInPage> {
                                                 SignUpPage()));
                                   },
                                 style: TextStyle(
-                                  color: Colors.blue,
+                                  color: Colors.amber,
                                 )),
                           ],
                         ),
@@ -203,4 +206,4 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
-  }
+}
