@@ -1,5 +1,6 @@
 import 'package:firebase_app_web/Service/Auth_Service.dart';
 import 'package:firebase_app_web/pages/HomePage.dart';
+import 'package:firebase_app_web/pages/SignInPage.dart';
 import 'package:firebase_app_web/pages/SignUpPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   AuthClass authClass = AuthClass();
-  Widget currentPage = SignUpPage();
+  Widget currentPage = SignInPage();
 
   @override
   void initState() {

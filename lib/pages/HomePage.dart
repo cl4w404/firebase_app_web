@@ -5,6 +5,7 @@ import 'package:firebase_app_web/pages/main_home.dart';
 import 'package:firebase_app_web/pages/side_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_app_web/pages/SignUpPage.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,26 +22,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.amber,
         title: Text(
           'Plug Wa Samsung',
           style: GoogleFonts.merienda(
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          IconButton(
-              color: Colors.amber,
-              icon: Icon(Icons.logout),
-              onPressed: () async {
-                authClass.signOut();
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (builder) => MyApp()),
-                    (route) => false);
-              }),
-        ],
+
       ),
       drawer: Drawer(
         child: ListView(
@@ -53,7 +43,81 @@ class _HomePageState extends State<HomePage> {
                 child: Text('HELLO there'),
               ),
             ),
-            ListTile(),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Profile'),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.smartphone_outlined),
+              title: Text('Phones'),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.laptop),
+              title: Text('Laptops'),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.headphones),
+              title: Text('Assesories'),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () => null,
+            ),
+            ListTile(
+              leading: Icon(Icons.chat_bubble),
+              title: Text('Chat'),
+              onTap: () => null,
+            ),
+        RaisedButton.icon(
+        onPressed: () async {
+          return showDialog(
+            builder: (context) => AlertDialog(
+              title: Text('Do you want to exit Plug wa samsung?'),
+              content: Text('We hate to see you leave...'),
+              actions: <Widget>[
+                FlatButton(
+                  onPressed: () {
+                    print("you choose no");
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text('No'),
+                ),
+                FlatButton(
+                  onPressed: () {
+                    authClass.signOut();
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (builder) => MyApp()),
+                            (route) => false);
+
+                  },
+                  child: Text('Yes'),
+                ),
+              ],
+            ), context: context,
+          ) ??
+              false;
+        },
+            shape: RoundedRectangleBorder(
+        borderRadius:
+        BorderRadius.all(Radius.circular(30.0))),
+    label: Text(
+    'Logout',
+    style: TextStyle(color: Colors.white),
+    ),
+    icon: Icon(
+    Icons.logout,
+    color: Colors.white,
+    ),
+    textColor: Colors.white,
+    splashColor: Colors.red,
+    color: Colors.amber,
+        ),
           ],
         ),
       ),
@@ -65,15 +129,13 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: HomeMain(),
             ),
-            Expanded(
-              child: Positioned(
-                right: 0,
-                child: SideBar(),
-              ),
-            ),
+
           ],
         ),
       ),
     );
   }
+
+
+
 }

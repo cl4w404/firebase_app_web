@@ -8,9 +8,7 @@
 
 > This project made for those whowanted to learn about the firebase and thier Auth, Cloud Storage and Cloud function modules with Flutter. This repo will help to understand how to use firebase with flutter using a fully functional Todo App
 
-### 🏠 [Homepage](https://www.youtube.com/playlist?list=PLtIU0BH0pkKrQZUFWENF_VXINhfv9WiIA)
 
-### ✨ [Demo](https://www.youtube.com/playlist?list=PLtIU0BH0pkKrQZUFWENF_VXINhfv9WiIA)
 
 ## Topic covered
 
@@ -32,15 +30,9 @@ flutter run
 
 ## Author
 
-👤 **Balram Rathore**
-
-- Website: http://www.youtube.com/c/DevStack
-- Github: [@DevStack06](https://github.com/DevStack06)
+👤 **cl4w404**
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-<a href="https://www.patreon.com/DevStack06">
-  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
